@@ -21,10 +21,13 @@ model Product {
 
 model User {
   id        Int      @id @default(autoincrement())
-  email     String   @unique
   name      String?
+  email     String   @unique
+  password  String
   createdAt DateTime @default(now())
-  orders    Order[]
+  updatedAt DateTime @updatedAt
+
+  orders Order[]
 }
 
 model Order {
