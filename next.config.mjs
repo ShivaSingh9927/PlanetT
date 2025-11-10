@@ -4,7 +4,12 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    unoptimized: true,
+    // Allow Next.js to optimize remote images
+    domains: [
+      "hebbkx1anhila5yf.public.blob.vercel-storage.com",
+    ],
+    // Set to false for actual optimization; true disables optimization
+    unoptimized: false,
   },
 }
 
