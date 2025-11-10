@@ -9,9 +9,12 @@ export async function GET() {
       orderBy: { createdAt: "desc" },
     });
     return NextResponse.json(products);
-  } catch (error) {
-    console.error("Error fetching products:", error);
-    return NextResponse.json({ error: "Failed to fetch products" }, { status: 500 });
+  } catch (error: any) {
+    console.error("🔥 Full error fetching products:", error);
+    return NextResponse.json(
+      { error: "Failed to fetch products", details: error.message },
+      { status: 500 }
+    );
   } finally {
     await prisma.$disconnect();
   }
