@@ -1,15 +1,14 @@
-import type React from "react"
-import type { Metadata } from "next"
-import { Geist, Geist_Mono } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
-import "./globals.css"
+import type React from "react";
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import "./globals.css";
 
-// IMPORTANT: these imports must match your project structure
-import Header from "../components/Header"
-import { StoreProvider } from "../context/CartWishlistContext"
+import { StoreProvider } from "../context/CartWishlistContext";
+import ClientLayout from "./ClientLayout"; // 👈 new client wrapper
 
-const _geist = Geist({ subsets: ["latin"] })
-const _geistMono = Geist_Mono({ subsets: ["latin"] })
+const _geist = Geist({ subsets: ["latin"] });
+const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Planet T - Men's Clothing",
@@ -32,23 +31,21 @@ export const metadata: Metadata = {
     ],
     apple: "/apple-icon.png",
   },
-}
+};
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <body className={`font-sans antialiased ${_geist.className} ${_geistMono.className}`}>
         <StoreProvider>
-          <Header />
-          <main>{children}</main>
+          <ClientLayout>{children}</ClientLayout>
         </StoreProvider>
-
         <Analytics />
       </body>
     </html>
-  )
+  );
 }

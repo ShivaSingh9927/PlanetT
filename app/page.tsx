@@ -139,6 +139,13 @@ export default function HomePage() {
             </h1>
 
             <div className="flex items-center gap-4">
+            <Link
+              href="/landing"
+              className="px-4 py-2 text-sm font-semibold border border-gray-300 rounded hover:bg-gray-100 transition"
+            >
+              Login / Signup
+            </Link>
+
               <button className="p-2 hover:bg-gray-50 rounded transition-colors">
                 <Search size={20} />
               </button>
